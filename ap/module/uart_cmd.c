@@ -14,6 +14,15 @@
 #define SERVO_TARGET_CMP_LEN 6
 #define BLIND_TARGET_CMP_LEN 6
 
+/**
+ * @brief    UART Serial로 수신한 데이터를 문자를 배열에 저장하고, 문자열 완성 시그널을 수신 받으면 완성된 문자열을 파싱하여 명령을 보낼 타겟, 파싱된 명령, 모듈의 전달인자를 생성
+ * @param[in,out]   huart_cmd      지정할 타깃과, 파싱된 명령, 모듈의 전달인자를 저장하는 인스턴스
+ * @param[in]      data          UART 수신 1byte 데이터
+ * @retval true    완성된 문자열이 유효함, 문자열이 파싱되어 타깃과 명령이 생성됨
+ * @retval false   인스턴스 주소가 유효하지 않음, 타깃이 유효하지 않음, 문자열이 완성 되지 않았음, 문자열이 완성 되었으나 유효하지 않은 문자열.
+ */
+
+
 bool uart_cmd_process(uint8_t data,Uart_Cmd_type* huart_cmd){
 	if(huart_cmd == NULL)return false;
 

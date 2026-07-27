@@ -4,4 +4,4 @@
 ../ap/module/stopwatch.c:43:6:stopwatch_stop	1
 ../ap/module/stopwatch.c:48:6:stopwatch_set_cmd	1
 ../ap/module/stopwatch.c:53:6:stopwatch_update	4
-../ap/module/stopwatch.c:70:6:stopwatch_process	10
+../ap/module/stopwatch.c:76:6:stopwatch_process	10

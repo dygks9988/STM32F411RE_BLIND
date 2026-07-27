@@ -27,15 +27,15 @@ void rtos_init(void)
 	}
 	SW_Cmd_QueueHandle = xQueueCreate(SW_CMD_QUEUE_LENGTH,sizeof(uint8_t));
 	if(SW_Cmd_QueueHandle == NULL){
-			Error_Handler();
+		Error_Handler();
 	}
 
 	Servo_Cmd_QueueHandle = xQueueCreate(SERVO_CMD_QUEUE_LENGTH,sizeof(struct Servo_Cmd_PacketTypeDef *));
 	if(SW_Cmd_QueueHandle == NULL){
-			Error_Handler();
+		Error_Handler();
 	}
 	SmartBlind_Cmd_QueueHandle = xQueueCreate(SMART_BLIND_CMD_QUEUE_LENGTH,sizeof(uint8_t));
 	if(SmartBlind_Cmd_QueueHandle == NULL){
-			Error_Handler();
+		Error_Handler();
 	}
 }

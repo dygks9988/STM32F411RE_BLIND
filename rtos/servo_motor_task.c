@@ -7,6 +7,12 @@
 #include "rtos_task.h"
 #include "servo_motor.h"
 
+/**
+ * @brief   서보 모터의 인스터스를 생성,명령을 수신하면 서보모터 애플리케이션 모듈을 호출한다.
+ * @details   루프가 서보 모터 명령을 수신받을 때까지 Blocking 되며, 태스크가 실행 되면 서보모터가 동작 상태로 시작한다.
+ * @return NONE
+ */
+
 void servo_motor_task(void){
 	Servo_Cmd_PacketTypeDef pservo_cmd;
 	Servo_HandleTypeDef hservo1;

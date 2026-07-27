@@ -22,11 +22,11 @@ void set_servo_motor_cmd(Servo_HandleTypeDef* hservo,Servo_Cmd_PacketTypeDef* ps
 	hservo->hservo_cmd.servo_cmd_angle = pservo_cmd->servo_cmd_angle;
 }
 
-/*
- * servo_motor_process
- * - Queue에서 받은 Command를 1회성 이벤트로 처리한다.
- * - Queuerecive를 트리거로 실행되는 process이기에 별도의 Command 초기화 로직을 수행하지 않는다.
- *
+/**
+ * @brief    서보모터 명령을 처리하고 명령에 따라 상태를 수정한다.
+ * @param[in,out]   hservo   현재 서보의 상태, 수행 할 명령을 담는 인스턴스
+ * @return NONE
+ * @warning   1회성으로 실행 되는 프로세스이기에 명령을 소비하지 않는 구조, 주기성 실행이 필요하다면 리팩토링 필요하다.
  */
 void servo_motor_process(Servo_HandleTypeDef* hservo){
 	if(hservo == NULL)return;

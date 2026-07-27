@@ -1,2 +1,2 @@
 ../ap/smart_blind.c:16:6:blind_init	16	static
-../ap/smart_blind.c:28:6:blind_process	24	static
+../ap/smart_blind.c:30:6:blind_process	24	static

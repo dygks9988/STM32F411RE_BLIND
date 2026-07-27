@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  0001ef18  00000000  00000000  0002f2d5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00025fb8  00000000  00000000  0004e1ed  2**0
+ 17 .debug_line   00025fbe  00000000  00000000  0004e1ed  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000a553a  00000000  00000000  000741a5  2**0
+ 18 .debug_str    000a553a  00000000  00000000  000741ab  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  001196df  2**0
+ 19 .comment      00000043  00000000  00000000  001196e5  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000065c4  00000000  00000000  00119724  2**2
+ 20 .debug_frame  000065c4  00000000  00000000  00119728  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000053  00000000  00000000  0011fce8  2**0
+ 21 .debug_line_str 00000053  00000000  00000000  0011fcec  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -20065,10 +20065,10 @@ void set_servo_motor_cmd(Servo_HandleTypeDef* hservo,Servo_Cmd_PacketTypeDef* ps
  80072e0:	4770      	bx	lr
 
 080072e2 <servo_motor_process>:
- * servo_motor_process
- * - Queue에서 받은 Command를 1회성 이벤트로 처리한다.
- * - Queuerecive를 트리거로 실행되는 process이기에 별도의 Command 초기화 로직을 수행하지 않는다.
- *
+ * @brief    서보모터 명령을 처리하고 명령에 따라 상태를 수정한다.
+ * @param[in,out]   hservo   현재 서보의 상태, 수행 할 명령을 담는 인스턴스
+ * @return NONE
+ * @warning   1회성으로 실행 되는 프로세스이기에 명령을 소비하지 않는 구조, 주기성 실행이 필요하다면 리팩토링 필요하다.
  */
 void servo_motor_process(Servo_HandleTypeDef* hservo){
  80072e2:	b580      	push	{r7, lr}
@@ -20360,6 +20360,11 @@ void stopwatch_update(void){
  8007494:	20004bfc 	.word	0x20004bfc
 
 08007498 <stopwatch_process>:
+ * @brief   스톱워치 명령을 처리하고 명령에 따라 상태를 수정한다.
+ * @details   루프에서 주기적으로 호출 되어야 하며, TIM_ISR에서 세운 ten_ms_flag의 상태가 변화 되었다면 stopwatch_update를 호출한다.
+ * @note   TIM의 ISR 호출 주기가 10ms 이므로 루프의 함수 호출 주기를 10ms이내로 설정해야 한다.
+ */
+
 void stopwatch_process(void){
  8007498:	b580      	push	{r7, lr}
  800749a:	af00      	add	r7, sp, #0
@@ -20460,10 +20465,10 @@ void stopwatch_process(void){
  800752c:	20004c23 	.word	0x20004c23
 
 08007530 <uart_cmd_process>:
-#define CMD_IDX_MAX 30
-#define STOPWATCH_TARGET_CMP_LEN 3
-#define SERVO_TARGET_CMP_LEN 6
-#define BLIND_TARGET_CMP_LEN 6
+ * @retval true    완성된 문자열이 유효함, 문자열이 파싱되어 타깃과 명령이 생성됨
+ * @retval false   인스턴스 주소가 유효하지 않음, 타깃이 유효하지 않음, 문자열이 완성 되지 않았음, 문자열이 완성 되었으나 유효하지 않은 문자열.
+ */
+
 
 bool uart_cmd_process(uint8_t data,Uart_Cmd_type* huart_cmd){
  8007530:	b580      	push	{r7, lr}
@@ -21353,7 +21358,7 @@ void rtos_init(void)
  8007aa6:	681b      	ldr	r3, [r3, #0]
  8007aa8:	2b00      	cmp	r3, #0
  8007aaa:	d101      	bne.n	8007ab0 <rtos_init+0x3c>
-			Error_Handler();
+		Error_Handler();
  8007aac:	f7f8 ff34 	bl	8000918 <Error_Handler>
 	}
 
@@ -21370,7 +21375,7 @@ void rtos_init(void)
  8007ac2:	681b      	ldr	r3, [r3, #0]
  8007ac4:	2b00      	cmp	r3, #0
  8007ac6:	d101      	bne.n	8007acc <rtos_init+0x58>
-			Error_Handler();
+		Error_Handler();
  8007ac8:	f7f8 ff26 	bl	8000918 <Error_Handler>
 	}
 	SmartBlind_Cmd_QueueHandle = xQueueCreate(SMART_BLIND_CMD_QUEUE_LENGTH,sizeof(uint8_t));
@@ -21386,7 +21391,7 @@ void rtos_init(void)
  8007ade:	681b      	ldr	r3, [r3, #0]
  8007ae0:	2b00      	cmp	r3, #0
  8007ae2:	d101      	bne.n	8007ae8 <rtos_init+0x74>
-			Error_Handler();
+		Error_Handler();
  8007ae4:	f7f8 ff18 	bl	8000918 <Error_Handler>
 	}
 }
@@ -21398,10 +21403,10 @@ void rtos_init(void)
  8007af8:	20004c34 	.word	0x20004c34
 
 08007afc <servo_motor_task>:
- *      Author: PC
+ * @brief   서보 모터의 인스터스를 생성,명령을 수신하면 서보모터 애플리케이션 모듈을 호출한다.
+ * @details   루프가 서보 모터 명령을 수신받을 때까지 Blocking 되며, 태스크가 실행 되면 서보모터가 동작 상태로 시작한다.
+ * @return NONE
  */
-#include "rtos_task.h"
-#include "servo_motor.h"
 
 void servo_motor_task(void){
  8007afc:	b580      	push	{r7, lr}
@@ -21460,10 +21465,10 @@ void servo_motor_task(void){
  8007b5c:	20004c30 	.word	0x20004c30
 
 08007b60 <smart_blind_task>:
+ * @brief   블라인드 상태를 저장할 변수 생성,명령을 수신하면 블라인드 애플리케이션 모듈을 호출하고, 서보 모터로 명령을 송신한다
+ * @details   루프가 명령을 수신받을 때까지 Blocking 된다.
+ * @return NONE
  */
-
-#include "rtos_task.h"
-#include "smart_blind.h"
 
 void smart_blind_task(void){
  8007b60:	b580      	push	{r7, lr}
@@ -21512,9 +21517,9 @@ void smart_blind_task(void){
  8007bac:	20004c30 	.word	0x20004c30
 
 08007bb0 <stopwatch_task>:
-const TickType_t Sw_Task_Delay_Tick = 10;
-
-
+ * @brief   stopwatch_process를 10ms주기로 호출하고,명령을 수신 받으면 stopwatch_set_cmd를 호출하여 동작 정책을 수정.
+ * @return NONE
+ */
 
 
 void stopwatch_task(){
@@ -21560,10 +21565,10 @@ void stopwatch_task(){
  8007bf4:	20004c2c 	.word	0x20004c2c
 
 08007bf8 <uart_cmd_task>:
-#include "uart_cmd.h"
-
-
-
+ * @brief   UART의 ISR로부터 데이터를 수신하면, uart_cmd_process를 호출하고,명령이 생성되었으면 지정된 타깃으로 명령을 송신한다.
+ * @details   루프가 명령을 수신받을 때까지 Blocking 된다.
+ * @return NONE
+ */
 
 void uart_cmd_task(){
  8007bf8:	b580      	push	{r7, lr}

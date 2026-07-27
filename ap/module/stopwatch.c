@@ -67,6 +67,12 @@ void stopwatch_update(void){
 	}
 
 }
+/**
+ * @brief   스톱워치 명령을 처리하고 명령에 따라 상태를 수정한다.
+ * @details   루프에서 주기적으로 호출 되어야 하며, TIM_ISR에서 세운 ten_ms_flag의 상태가 변화 되었다면 stopwatch_update를 호출한다.
+ * @note   TIM의 ISR 호출 주기가 10ms 이므로 루프의 함수 호출 주기를 10ms이내로 설정해야 한다.
+ */
+
 void stopwatch_process(void){
 		switch(sw.state){
 		case IDLE:

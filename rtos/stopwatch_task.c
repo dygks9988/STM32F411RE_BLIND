@@ -12,7 +12,10 @@
 
 const TickType_t Sw_Task_Delay_Tick = 10;
 
-
+/**
+ * @brief   stopwatch_process를 10ms주기로 호출하고,명령을 수신 받으면 stopwatch_set_cmd를 호출하여 동작 정책을 수정.
+ * @return NONE
+ */
 
 
 void stopwatch_task(){

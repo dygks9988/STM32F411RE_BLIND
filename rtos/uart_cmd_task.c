@@ -7,8 +7,11 @@
 #include "rtos_task.h"
 #include "uart_cmd.h"
 
-
-
+/**
+ * @brief   UART의 ISR로부터 데이터를 수신하면, uart_cmd_process를 호출하고,명령이 생성되었으면 지정된 타깃으로 명령을 송신한다.
+ * @details   루프가 명령을 수신받을 때까지 Blocking 된다.
+ * @return NONE
+ */
 
 void uart_cmd_task(){
 	Uart_Cmd_type huart_cmd;
