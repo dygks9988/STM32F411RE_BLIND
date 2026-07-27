@@ -4,6 +4,7 @@
 STM32F411RE 보드를 기반으로 GPIO, TIM, UART, Interrupt, FreeRTOS Task를 활용한 비동기 제어 시스템을 구현하는 프로젝트입니다.
 
 초기에는 TIM Interrupt와 main loop 기반의 Stopwatch 기능 구현으로 시작했지만, 기능 확장 과정에서 main.c의 복잡도 증가와 Application/HW 계층 결합 문제를 발견했습니다. 이를 개선하기 위해 HW Wrapper 계층, RTOS Task, Queue 기반 모듈 간 통신 구조로 리팩토링했습니다.
+현재 목표를 SERVO_MOTOR를 활용한 SMART_BLIND 시스템 프로젝트로 재구성할 계획입니다.
 
 ## 현재 구현 상태
 - AP/HW 계층 분리
@@ -12,10 +13,43 @@ STM32F411RE 보드를 기반으로 GPIO, TIM, UART, Interrupt, FreeRTOS Task를 
 - UART_CMD_PARSER 모듈 추가
 - UART_CMD_TASK → SW_TASK Queue 통신 검증
 - UART 명령 기반 Stopwatch 상태 제어 검증
+- SERVO_MOTOR 동작을 결정하는 모듈과 태스크 추가
+- SERVO_MOTOR 동작시키는 SMART_BLIND 애플리케이션 모듈, TASK 추가
 
 ## 주요 데이터 흐름
 
+**STOPWATCH**
+
 UART_RX_ISR > Uart_Rx_Queue > uart_cmd_task > uart_cmd_process(parser) > Sw_Cmd_Queue > sw_task > sw_module
+
+
+**SMART_BLIND**
+
+PC terminal
+
+-> uart_rx_Interrupt(hw/driver/uart)
+
+-> uart_rx_queue(hw/driver/uart)
+
+-> uart_cmd_task(rtos/uart_cmd_task)
+
+-> uart_cmd_process(ap/module/uart_cmd)
+
+-> smart_blind_queue(rtos/uart_cmd_task)
+
+-> smart_blind_task(rtos/smart_blind_task)
+
+-> smart_blind_process(ap/module/smart_blind)
+
+-> servo_motor_queue(rtos/smart_blind_task)
+
+-> servo_motor_task(rtos/servo_motor_task)
+
+-> servo_motor_process(ap/module/servo_motor)
+
+-> hw_motor(hw/driver/hw_motor)
+
+-> hw_tim_pwm(hw/driver/hw_tim)
 
 ---
 
