@@ -28,7 +28,7 @@ void stopwatch_task(){
 			stopwatch_set_cmd(Cmd);
 		}
 		stopwatch_process();
-		vTaskDelayUntil(&xLastWakeTime, Sw_Task_Delay_Tick);
+		vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(10));
 	}
 }
 

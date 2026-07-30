@@ -9,6 +9,7 @@ C_SRCS += \
 ../hw/driver/hw_adc.c \
 ../hw/driver/hw_motor.c \
 ../hw/driver/hw_tim.c \
+../hw/driver/lcd.c \
 ../hw/driver/led.c \
 ../hw/driver/uart.c 
 
@@ -17,6 +18,7 @@ OBJS += \
 ./hw/driver/hw_adc.o \
 ./hw/driver/hw_motor.o \
 ./hw/driver/hw_tim.o \
+./hw/driver/lcd.o \
 ./hw/driver/led.o \
 ./hw/driver/uart.o 
 
@@ -25,6 +27,7 @@ C_DEPS += \
 ./hw/driver/hw_adc.d \
 ./hw/driver/hw_motor.d \
 ./hw/driver/hw_tim.d \
+./hw/driver/lcd.d \
 ./hw/driver/led.d \
 ./hw/driver/uart.d 
 
@@ -36,7 +39,7 @@ hw/driver/%.o hw/driver/%.su hw/driver/%.cyclo: ../hw/driver/%.c hw/driver/subdi
 clean: clean-hw-2f-driver
 
 clean-hw-2f-driver:
-	-$(RM) ./hw/driver/button.cyclo ./hw/driver/button.d ./hw/driver/button.o ./hw/driver/button.su ./hw/driver/hw_adc.cyclo ./hw/driver/hw_adc.d ./hw/driver/hw_adc.o ./hw/driver/hw_adc.su ./hw/driver/hw_motor.cyclo ./hw/driver/hw_motor.d ./hw/driver/hw_motor.o ./hw/driver/hw_motor.su ./hw/driver/hw_tim.cyclo ./hw/driver/hw_tim.d ./hw/driver/hw_tim.o ./hw/driver/hw_tim.su ./hw/driver/led.cyclo ./hw/driver/led.d ./hw/driver/led.o ./hw/driver/led.su ./hw/driver/uart.cyclo ./hw/driver/uart.d ./hw/driver/uart.o ./hw/driver/uart.su
+	-$(RM) ./hw/driver/button.cyclo ./hw/driver/button.d ./hw/driver/button.o ./hw/driver/button.su ./hw/driver/hw_adc.cyclo ./hw/driver/hw_adc.d ./hw/driver/hw_adc.o ./hw/driver/hw_adc.su ./hw/driver/hw_motor.cyclo ./hw/driver/hw_motor.d ./hw/driver/hw_motor.o ./hw/driver/hw_motor.su ./hw/driver/hw_tim.cyclo ./hw/driver/hw_tim.d ./hw/driver/hw_tim.o ./hw/driver/hw_tim.su ./hw/driver/lcd.cyclo ./hw/driver/lcd.d ./hw/driver/lcd.o ./hw/driver/lcd.su ./hw/driver/led.cyclo ./hw/driver/led.d ./hw/driver/led.o ./hw/driver/led.su ./hw/driver/uart.cyclo ./hw/driver/uart.d ./hw/driver/uart.o ./hw/driver/uart.su
 
 .PHONY: clean-hw-2f-driver
 

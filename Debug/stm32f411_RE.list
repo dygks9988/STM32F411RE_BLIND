@@ -20786,8 +20786,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
  800771c:	20004c22 	.word	0x20004c22
 
 08007720 <hw_motor_init>:
-
-
+#define MAX_ANGLE 180
+#define SERVO_MIN_CCR 600
 
 
 
@@ -21503,7 +21503,7 @@ void smart_blind_task(void){
  8007b90:	4603      	mov	r3, r0
  8007b92:	2b00      	cmp	r3, #0
  8007b94:	d0eb      	beq.n	8007b6e <smart_blind_task+0xe>
-				xQueueSend(Servo_Cmd_QueueHandle,&pservo_cmd,(TickType_t )10);
+				xQueueSend(Servo_Cmd_QueueHandle,&pservo_cmd,pdMS_TO_TICKS(10));
  8007b96:	4b05      	ldr	r3, [pc, #20]	@ (8007bac <smart_blind_task+0x4c>)
  8007b98:	6818      	ldr	r0, [r3, #0]
  8007b9a:	1d39      	adds	r1, r7, #4
@@ -21554,14 +21554,14 @@ void stopwatch_task(){
 		}
 		stopwatch_process();
  8007be2:	f7ff fc59 	bl	8007498 <stopwatch_process>
-		vTaskDelayUntil(&xLastWakeTime, Sw_Task_Delay_Tick);
- 8007be6:	220a      	movs	r2, #10
- 8007be8:	463b      	mov	r3, r7
- 8007bea:	4611      	mov	r1, r2
- 8007bec:	4618      	mov	r0, r3
- 8007bee:	f7fd fd71 	bl	80056d4 <vTaskDelayUntil>
+		vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(10));
+ 8007be6:	463b      	mov	r3, r7
+ 8007be8:	210a      	movs	r1, #10
+ 8007bea:	4618      	mov	r0, r3
+ 8007bec:	f7fd fd72 	bl	80056d4 <vTaskDelayUntil>
 		if(xQueueReceive(SW_Cmd_QueueHandle,&Cmd,0)== pdPASS){
- 8007bf2:	e7e8      	b.n	8007bc6 <stopwatch_task+0x16>
+ 8007bf0:	e7e9      	b.n	8007bc6 <stopwatch_task+0x16>
+ 8007bf2:	bf00      	nop
  8007bf4:	20004c2c 	.word	0x20004c2c
 
 08007bf8 <uart_cmd_task>:
@@ -21615,7 +21615,7 @@ void uart_cmd_task(){
 					case NONE_CMD_CH:
 						break;
 					case SW_CMD_CH:
-						xQueueSend(SW_Cmd_QueueHandle,&huart_cmd.cmd,(TickType_t )10);
+						xQueueSend(SW_Cmd_QueueHandle,&huart_cmd.cmd,pdMS_TO_TICKS(10));
  8007c44:	4b13      	ldr	r3, [pc, #76]	@ (8007c94 <uart_cmd_task+0x9c>)
  8007c46:	6818      	ldr	r0, [r3, #0]
  8007c48:	1d3b      	adds	r3, r7, #4
@@ -21635,7 +21635,7 @@ void uart_cmd_task(){
 						pservo.servo_cmd_angle = huart_cmd.value;
  8007c5e:	79bb      	ldrb	r3, [r7, #6]
  8007c60:	707b      	strb	r3, [r7, #1]
-						xQueueSend(Servo_Cmd_QueueHandle,&pservo,(TickType_t )10);
+						xQueueSend(Servo_Cmd_QueueHandle,&pservo,pdMS_TO_TICKS(10));
  8007c62:	4b0d      	ldr	r3, [pc, #52]	@ (8007c98 <uart_cmd_task+0xa0>)
  8007c64:	6818      	ldr	r0, [r3, #0]
  8007c66:	4639      	mov	r1, r7
@@ -21648,7 +21648,7 @@ void uart_cmd_task(){
 						break;
  8007c74:	e00a      	b.n	8007c8c <uart_cmd_task+0x94>
 					case BLIND_CMD_CH:
-						xQueueSend(SmartBlind_Cmd_QueueHandle,&huart_cmd.cmd,(TickType_t )10);
+						xQueueSend(SmartBlind_Cmd_QueueHandle,&huart_cmd.cmd,pdMS_TO_TICKS(10));
  8007c76:	4b09      	ldr	r3, [pc, #36]	@ (8007c9c <uart_cmd_task+0xa4>)
  8007c78:	6818      	ldr	r0, [r3, #0]
  8007c7a:	1d3b      	adds	r3, r7, #4

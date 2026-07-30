@@ -17,6 +17,7 @@ void stopwatch_task(void);
 void uart_cmd_task(void);
 void servo_motor_task(void);
 void smart_blind_task(void);
+void sensor_task(void);
 
 extern QueueHandle_t UartRxQueueHandle;
 extern QueueHandle_t SW_Cmd_QueueHandle;

@@ -17,5 +17,6 @@ typedef enum{
 	CDS_LIGHT
 }CdsState_TypeDef;
 
+bool cds_process(CdsState_TypeDef* cds_state,uint8_t ch);
 
 #endif /* MODULE_CDS_H_ */

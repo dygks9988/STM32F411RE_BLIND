@@ -30,17 +30,17 @@ void uart_cmd_task(){
 					case NONE_CMD_CH:
 						break;
 					case SW_CMD_CH:
-						xQueueSend(SW_Cmd_QueueHandle,&huart_cmd.cmd,(TickType_t )10);
+						xQueueSend(SW_Cmd_QueueHandle,&huart_cmd.cmd,pdMS_TO_TICKS(10));
 						huart_cmd.target_ch = NONE_CMD_CH;
 						break;
 					case SERVO_CMD_CH:
 						pservo.servo_cmd = huart_cmd.cmd;
 						pservo.servo_cmd_angle = huart_cmd.value;
-						xQueueSend(Servo_Cmd_QueueHandle,&pservo,(TickType_t )10);
+						xQueueSend(Servo_Cmd_QueueHandle,&pservo,pdMS_TO_TICKS(10));
 						huart_cmd.target_ch = NONE_CMD_CH;
 						break;
 					case BLIND_CMD_CH:
-						xQueueSend(SmartBlind_Cmd_QueueHandle,&huart_cmd.cmd,(TickType_t )10);
+						xQueueSend(SmartBlind_Cmd_QueueHandle,&huart_cmd.cmd,pdMS_TO_TICKS(10));
 						huart_cmd.target_ch = NONE_CMD_CH;
 					}
 			}

@@ -6756,6 +6756,173 @@ Discarded input sections
  .debug_macro   0x00000000       0x20 ./hw/driver/hw_tim.o
  .debug_macro   0x00000000       0x5e ./hw/driver/hw_tim.o
  .debug_macro   0x00000000       0x16 ./hw/driver/hw_tim.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .text          0x00000000        0x0 ./hw/driver/lcd.o
+ .data          0x00000000        0x0 ./hw/driver/lcd.o
+ .bss           0x00000000        0x0 ./hw/driver/lcd.o
+ .bss.lcd_tbl   0x00000000       0x34 ./hw/driver/lcd.o
+ .text.lcd_bit_reset
+                0x00000000       0x58 ./hw/driver/lcd.o
+ .text.lcd_init
+                0x00000000      0x128 ./hw/driver/lcd.o
+ .text.lcd_begin
+                0x00000000       0x26 ./hw/driver/lcd.o
+ .text.lcd_set_cursor
+                0x00000000       0x2a ./hw/driver/lcd.o
+ .text.lcd_write_str
+                0x00000000       0x2a ./hw/driver/lcd.o
+ .text.lcd_clear
+                0x00000000       0x22 ./hw/driver/lcd.o
+ .debug_info    0x00000000      0x3b4 ./hw/driver/lcd.o
+ .debug_abbrev  0x00000000      0x1bf ./hw/driver/lcd.o
+ .debug_aranges
+                0x00000000       0x48 ./hw/driver/lcd.o
+ .debug_rnglists
+                0x00000000       0x32 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x36a ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0xab4 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x2a1 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x2e ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x28 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x22 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x8e ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x51 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x103 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x6a ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x1df ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x1c ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x22 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0xfb ./hw/driver/lcd.o
+ .debug_macro   0x00000000     0x1011 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x11f ./hw/driver/lcd.o
+ .debug_macro   0x00000000     0xb968 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x6d ./hw/driver/lcd.o
+ .debug_macro   0x00000000     0x3693 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x189 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x5c ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x45c ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x9e9 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x115 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x11b ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0xa5 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x15f ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x287 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x5f ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x236 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x9e1 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x38b ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x17d ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0xf9 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x132 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x264 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x2e ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x127 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x85 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x89 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x8ed ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x47 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x2aa ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x126 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x22 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x61 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x2a ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x43 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x34 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x16 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x35 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x369 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x10 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x16 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x43 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x34 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x10 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x58 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x8e ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x1c ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x177 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x16 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x16 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x146 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x16 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x16 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x29 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x16 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x20 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x5e ./hw/driver/lcd.o
+ .debug_line    0x00000000      0xa65 ./hw/driver/lcd.o
+ .debug_str     0x00000000    0x96300 ./hw/driver/lcd.o
+ .comment       0x00000000       0x44 ./hw/driver/lcd.o
+ .debug_frame   0x00000000       0xf4 ./hw/driver/lcd.o
+ .ARM.attributes
+                0x00000000       0x34 ./hw/driver/lcd.o
  .group         0x00000000        0xc ./hw/driver/led.o
  .group         0x00000000        0xc ./hw/driver/led.o
  .group         0x00000000        0xc ./hw/driver/led.o
@@ -7371,6 +7538,186 @@ Discarded input sections
  .debug_macro   0x00000000       0x20 ./rtos/rtos_task.o
  .debug_macro   0x00000000       0x5e ./rtos/rtos_task.o
  .debug_macro   0x00000000       0x16 ./rtos/rtos_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .group         0x00000000        0xc ./rtos/sensor_task.o
+ .text          0x00000000        0x0 ./rtos/sensor_task.o
+ .data          0x00000000        0x0 ./rtos/sensor_task.o
+ .bss           0x00000000        0x0 ./rtos/sensor_task.o
+ .text.sensor_task
+                0x00000000       0x6c ./rtos/sensor_task.o
+ .bss.cds_state.0
+                0x00000000        0x1 ./rtos/sensor_task.o
+ .debug_info    0x00000000      0x1fa ./rtos/sensor_task.o
+ .debug_abbrev  0x00000000      0x10a ./rtos/sensor_task.o
+ .debug_aranges
+                0x00000000       0x20 ./rtos/sensor_task.o
+ .debug_rnglists
+                0x00000000       0x13 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x43e ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0xab4 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x2a1 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x2e ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x28 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x22 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x8e ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x51 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x103 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x6a ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x1df ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x1c ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x22 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0xfb ./rtos/sensor_task.o
+ .debug_macro   0x00000000     0x1011 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x11f ./rtos/sensor_task.o
+ .debug_macro   0x00000000     0xb968 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x6d ./rtos/sensor_task.o
+ .debug_macro   0x00000000     0x3693 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x189 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x5c ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x45c ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x9e9 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x115 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x11b ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0xa5 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x15f ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x287 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x5f ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x236 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x9e1 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x38b ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x17d ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0xf9 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x132 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x264 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x2e ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x127 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x85 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x89 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x8ed ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x47 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x2aa ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x126 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x22 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x61 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x2a ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x43 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x34 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x16 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x35 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x369 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x10 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x16 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x43 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x34 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x10 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x58 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x8e ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x1c ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x177 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x16 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x16 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x146 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x16 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x16 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x29 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x16 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x20 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x5e ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x16 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x16f ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x15a ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0xc9 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x1c ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x26 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x16 ./rtos/sensor_task.o
+ .debug_macro   0x00000000      0x4bf ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0xb5 ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0xaa ./rtos/sensor_task.o
+ .debug_macro   0x00000000       0x87 ./rtos/sensor_task.o
+ .debug_line    0x00000000      0xb75 ./rtos/sensor_task.o
+ .debug_str     0x00000000    0x9a97e ./rtos/sensor_task.o
+ .comment       0x00000000       0x44 ./rtos/sensor_task.o
+ .debug_frame   0x00000000       0x30 ./rtos/sensor_task.o
+ .ARM.attributes
+                0x00000000       0x34 ./rtos/sensor_task.o
  .group         0x00000000        0xc ./rtos/servo_motor_task.o
  .group         0x00000000        0xc ./rtos/servo_motor_task.o
  .group         0x00000000        0xc ./rtos/servo_motor_task.o
@@ -8293,10 +8640,12 @@ LOAD ./hw/driver/button.o
 LOAD ./hw/driver/hw_adc.o
 LOAD ./hw/driver/hw_motor.o
 LOAD ./hw/driver/hw_tim.o
+LOAD ./hw/driver/lcd.o
 LOAD ./hw/driver/led.o
 LOAD ./hw/driver/uart.o
 LOAD ./hw/hw.o
 LOAD ./rtos/rtos_task.o
+LOAD ./rtos/sensor_task.o
 LOAD ./rtos/servo_motor_task.o
 LOAD ./rtos/smart_blind_task.o
 LOAD ./rtos/stopwatch_task.o

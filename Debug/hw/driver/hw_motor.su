@@ -1,5 +1,5 @@
-../hw/driver/hw_motor.c:17:6:hw_motor_init	16	static
-../hw/driver/hw_motor.c:22:6:hw_motor_start	16	static
-../hw/driver/hw_motor.c:26:6:hw_motor_stop	16	static
-../hw/driver/hw_motor.c:30:17:angle_to_ccr	16	static
-../hw/driver/hw_motor.c:36:6:hw_motor_set_angle	16	static
+../hw/driver/hw_motor.c:14:6:hw_motor_init	16	static
+../hw/driver/hw_motor.c:19:6:hw_motor_start	16	static
+../hw/driver/hw_motor.c:23:6:hw_motor_stop	16	static
+../hw/driver/hw_motor.c:27:17:angle_to_ccr	16	static
+../hw/driver/hw_motor.c:33:6:hw_motor_set_angle	16	static

@@ -24,7 +24,7 @@ void smart_blind_task(void){
 	for(;;){
 		if(xQueueReceive(SmartBlind_Cmd_QueueHandle, &blind_cmd, portMAX_DELAY)==pdPASS){
 			if(blind_process(&blind_state,blind_cmd,&pservo_cmd) == true){
-				xQueueSend(Servo_Cmd_QueueHandle,&pservo_cmd,(TickType_t )10);
+				xQueueSend(Servo_Cmd_QueueHandle,&pservo_cmd,pdMS_TO_TICKS(10));
 			};
 		}
 	}
