@@ -6825,29 +6825,44 @@ Discarded input sections
  .group         0x00000000        0xc ./hw/driver/lcd.o
  .group         0x00000000        0xc ./hw/driver/lcd.o
  .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
+ .group         0x00000000        0xc ./hw/driver/lcd.o
  .text          0x00000000        0x0 ./hw/driver/lcd.o
  .data          0x00000000        0x0 ./hw/driver/lcd.o
  .bss           0x00000000        0x0 ./hw/driver/lcd.o
  .bss.lcd_tbl   0x00000000       0x34 ./hw/driver/lcd.o
+ .text.enable_pulse
+                0x00000000       0x90 ./hw/driver/lcd.o
  .text.lcd_bit_reset
-                0x00000000       0x58 ./hw/driver/lcd.o
+                0x00000000       0xb0 ./hw/driver/lcd.o
+ .text.write_upper_nibble
+                0x00000000       0x80 ./hw/driver/lcd.o
+ .text.lcd_instruction
+                0x00000000       0xe8 ./hw/driver/lcd.o
  .text.lcd_init
-                0x00000000      0x128 ./hw/driver/lcd.o
+                0x00000000      0x134 ./hw/driver/lcd.o
  .text.lcd_begin
-                0x00000000       0x26 ./hw/driver/lcd.o
+                0x00000000       0x7e ./hw/driver/lcd.o
  .text.lcd_set_cursor
                 0x00000000       0x2a ./hw/driver/lcd.o
  .text.lcd_write_str
                 0x00000000       0x2a ./hw/driver/lcd.o
  .text.lcd_clear
                 0x00000000       0x22 ./hw/driver/lcd.o
- .debug_info    0x00000000      0x3b4 ./hw/driver/lcd.o
- .debug_abbrev  0x00000000      0x1bf ./hw/driver/lcd.o
+ .debug_info    0x00000000      0x4ff ./hw/driver/lcd.o
+ .debug_abbrev  0x00000000      0x20b ./hw/driver/lcd.o
  .debug_aranges
-                0x00000000       0x48 ./hw/driver/lcd.o
+                0x00000000       0x60 ./hw/driver/lcd.o
  .debug_rnglists
-                0x00000000       0x32 ./hw/driver/lcd.o
- .debug_macro   0x00000000      0x36a ./hw/driver/lcd.o
+                0x00000000       0x48 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x3ea ./hw/driver/lcd.o
  .debug_macro   0x00000000      0xab4 ./hw/driver/lcd.o
  .debug_macro   0x00000000      0x2a1 ./hw/driver/lcd.o
  .debug_macro   0x00000000       0x2e ./hw/driver/lcd.o
@@ -6917,10 +6932,19 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 ./hw/driver/lcd.o
  .debug_macro   0x00000000       0x20 ./hw/driver/lcd.o
  .debug_macro   0x00000000       0x5e ./hw/driver/lcd.o
- .debug_line    0x00000000      0xa65 ./hw/driver/lcd.o
- .debug_str     0x00000000    0x96300 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x16f ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x15a ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0xc9 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x1c ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x26 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0x16 ./hw/driver/lcd.o
+ .debug_macro   0x00000000      0x4bf ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0xb5 ./hw/driver/lcd.o
+ .debug_macro   0x00000000       0xaa ./hw/driver/lcd.o
+ .debug_line    0x00000000      0xc73 ./hw/driver/lcd.o
+ .debug_str     0x00000000    0x9a1b6 ./hw/driver/lcd.o
  .comment       0x00000000       0x44 ./hw/driver/lcd.o
- .debug_frame   0x00000000       0xf4 ./hw/driver/lcd.o
+ .debug_frame   0x00000000      0x16c ./hw/driver/lcd.o
  .ARM.attributes
                 0x00000000       0x34 ./hw/driver/lcd.o
  .group         0x00000000        0xc ./hw/driver/led.o

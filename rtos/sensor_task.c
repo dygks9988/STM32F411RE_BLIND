@@ -11,7 +11,7 @@
 
 /**
  * @brief  	cds_process호출,센서의 상태가 수정 되면 상태 확인 후 blind_cmd 생성 및 전송
- * @details	루프의 로직의 실행 시간 + 100ms loop blocking 주기성 실행을 보장하지 않는다.
+ * @details	루프의 로직의 실행 시간 + 100ms loop blocking.
  * @return NONE
  */
 
