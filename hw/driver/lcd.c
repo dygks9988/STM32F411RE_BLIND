@@ -6,14 +6,16 @@
  */
 
 #include "lcd.h"
+
+#ifdef MY_RTOS
 #include "FreeRTOS.h"
 #include "task.h"
-
+#endif
 
 
 #define MAX_LCD 1
-#define MY_RTOS
-
+#define MAX_ROW 2
+#define MAX_COL 16
 
 enum lcd_instruction{
 	Display_clear = 0x01,
@@ -39,13 +41,20 @@ typedef struct{
 
 typedef struct{
 Lcd_PinTypeDef lcd_pin;
-uint8_t row;
-uint8_t col;
 bool lcd_onoff;
 }Lcd_HandleTypeDef;
 
 static Lcd_HandleTypeDef lcd_tbl[MAX_LCD];
 
+
+static void DWT_init(void) {
+// Enable the trace and debug module
+CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+// Reset the cycle counter
+DWT->CYCCNT = 0;
+// Enable the cycle counter
+DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+}
 
 static void Delay_us(uint32_t microseconds)
 {
@@ -57,9 +66,6 @@ static void Delay_us(uint32_t microseconds)
 	};
 }
 
-
-
-
 static void lcd_bit_reset(uint8_t ch){
 
 	HAL_GPIO_WritePin(lcd_tbl[ch].lcd_pin.rs.port,lcd_tbl[ch].lcd_pin.rs.pin_num, GPIO_PIN_RESET);
@@ -70,16 +76,24 @@ static void lcd_bit_reset(uint8_t ch){
 
 }
 
+static void RS_write(uint8_t ch,GPIO_PinState sel_reg){
+	HAL_GPIO_WritePin(lcd_tbl[ch].lcd_pin.rs.port, lcd_tbl[ch].lcd_pin.rs.pin_num, sel_reg);
+}
+
 static void enable_pulse(uint8_t ch){
 	HAL_GPIO_WritePin(
 		lcd_tbl[ch].lcd_pin.en.port,
 		lcd_tbl[ch].lcd_pin.en.pin_num,
 		GPIO_PIN_RESET);
 
+	Delay_us(1);
+
 	HAL_GPIO_WritePin(
 		lcd_tbl[ch].lcd_pin.en.port,
 		lcd_tbl[ch].lcd_pin.en.pin_num,
 		GPIO_PIN_SET);
+
+	Delay_us(1);
 
 	HAL_GPIO_WritePin(
 		lcd_tbl[ch].lcd_pin.en.port,
@@ -154,8 +168,6 @@ static void lcd_init(uint8_t ch){
 
 	lcd_bit_reset(ch);
 
-	lcd_tbl[ch].row = 0;
-	lcd_tbl[ch].col = 0;
 	lcd_tbl[ch].lcd_onoff = false;
 
 }
@@ -166,20 +178,30 @@ bool lcd_begin(uint8_t ch)
 {
 	if (ch >= MAX_LCD)return false;
 	lcd_init(ch);
+	DWT_init();
 	// 4-bit operation initializations
-#ifdef MY_RTOS
 	// wait for more than 15ms after Vcc rises to 4.5V
+#ifdef MY_RTOS
 	vTaskDelay(pdMS_TO_TICKS(20));
+#else
+	HAL_Delay(20);
+#endif
 
 	write_upper_nibble(ch,Function_set + 0x10);
 	//Wait for more than 4.1 ms
+#ifdef MY_RTOS
 	vTaskDelay(pdMS_TO_TICKS(10));
+#else
+	HAL_Delay(10);
+#endif
 
 	write_upper_nibble(ch,Function_set + 0x10);
 	//Wait for more than 100 µs
-	vTaskDelay(pdMS_TO_TICKS(1));
+	Delay_us(150);
+
 
 	write_upper_nibble(ch,Function_set + 0x10);
+	// Execution Time for Function_set 37us
 	Delay_us(50);
 
 	write_upper_nibble(ch,Function_set);
@@ -191,38 +213,74 @@ bool lcd_begin(uint8_t ch)
 	lcd_instruction(ch,Display_off);
 	Delay_us(50);
 
-	lcd_instruction(ch,Display_clear);
-	vTaskDelay(pdMS_TO_TICKS(3));
 
+	lcd_instruction(ch,Display_clear);
+	// Execution Time for Display Clear  1.52ms
+#ifdef MY_RTOS
+	vTaskDelay(pdMS_TO_TICKS(2));
+#else
+	HAL_Delay(2);
+#endif
 	lcd_instruction(ch,Entry_mode_set);
 	Delay_us(50);
 
 	lcd_instruction(ch,Display_on);
 	Delay_us(50);
 
+	lcd_tbl[ch].lcd_onoff = true;
 	return true;
-#endif //MY_RTOS
 
 }
 
+// This fuction set lcd cursor 0~15 to 1~2 lcd line
 bool lcd_set_cursor(uint8_t ch,uint8_t row,uint8_t col){
-	if (ch >= MAX_LCD)return false;
+	if (ch >= MAX_LCD || row  >= MAX_ROW || col >= MAX_COL)return false;
+	RS_write(ch,GPIO_PIN_RESET);
 
+	if(row == 0){
+	lcd_instruction(ch,Set_DDRAM_Address + col);
+	}
+	else if(row == 1){
+	lcd_instruction(ch,Set_DDRAM_Address + 0x40+col);
+	}
+	else{
+		return false;
+	}
+	Delay_us(50);
 	return true;
-} // DDRAM address 설정
+} // DDRAM address set
 
 
 bool lcd_write_str(uint8_t ch,const char* str){
 	if (ch >= MAX_LCD || str == NULL)return false;
 
+	RS_write(ch,GPIO_PIN_SET);
+
+	uint8_t len = strlen(str);
+
+	for(uint8_t i = 0 ; i < len; i++){
+	lcd_instruction(ch,str[i]);
+	Delay_us(50);
+	}
+
 	return true;
-} // DDRAM data 작성
+} // DDRAM data write
+
 
 
 bool lcd_clear(uint8_t ch){
 	if (ch >= MAX_LCD)return false;
+	RS_write(ch,GPIO_PIN_RESET);
 
+	lcd_instruction(ch,Display_clear);
+
+	// Execution Time for Display Clear  1.52ms
+#ifdef MY_RTOS
+	vTaskDelay(pdMS_TO_TICKS(3));
+#else
+	HAL_Delay(3);
+#endif
 	return true;
-} //clear
+} //Display Clear
 
 

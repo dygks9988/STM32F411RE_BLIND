@@ -77,7 +77,7 @@ void Error_Handler(void);
 #define SWO_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-
+#define MY_RTOS
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
