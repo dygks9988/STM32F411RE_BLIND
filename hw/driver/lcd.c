@@ -9,8 +9,9 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
+
+
 #define MAX_LCD 1
-#define LCD_CH0
 #define MY_RTOS
 
 
@@ -19,6 +20,7 @@ enum lcd_instruction{
 	Return_Home = 0x02,
 	Entry_mode_set = 0x06,
 	Display_off = 0x08,
+	Display_on = 0x0c,
 	Function_set = 0x20,
 	Set_CGRAM_Address = 0x40,
 	Set_DDRAM_Address = 0x80,
@@ -45,20 +47,17 @@ bool lcd_onoff;
 static Lcd_HandleTypeDef lcd_tbl[MAX_LCD];
 
 
-static void enable_pulse(uint8_t ch){
-	HAL_GPIO_WritePin(
-		lcd_tbl[ch].lcd_pin.en.port,
-		lcd_tbl[ch].lcd_pin.en.pin_num,
-		GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(
-		lcd_tbl[ch].lcd_pin.en.port,
-		lcd_tbl[ch].lcd_pin.en.pin_num,
-		GPIO_PIN_SET);
-	HAL_GPIO_WritePin(
-		lcd_tbl[ch].lcd_pin.en.port,
-		lcd_tbl[ch].lcd_pin.en.pin_num,
-		GPIO_PIN_RESET);
+static void Delay_us(uint32_t microseconds)
+{
+	uint32_t start_cycle = DWT->CYCCNT;
+	uint32_t cycles_per_us = HAL_RCC_GetHCLKFreq() / 1000000; // 1us occur cycles
+
+	while ((DWT->CYCCNT - start_cycle)
+	       < microseconds * cycles_per_us) {
+	};
 }
+
+
 
 
 static void lcd_bit_reset(uint8_t ch){
@@ -71,10 +70,30 @@ static void lcd_bit_reset(uint8_t ch){
 
 }
 
-// When the power is turned on, 8-bit
-// operation is automatically selected and the first write is performed as an 8-bit operation.
-// 4-bit operation init sequence function
+static void enable_pulse(uint8_t ch){
+	HAL_GPIO_WritePin(
+		lcd_tbl[ch].lcd_pin.en.port,
+		lcd_tbl[ch].lcd_pin.en.pin_num,
+		GPIO_PIN_RESET);
 
+	HAL_GPIO_WritePin(
+		lcd_tbl[ch].lcd_pin.en.port,
+		lcd_tbl[ch].lcd_pin.en.pin_num,
+		GPIO_PIN_SET);
+
+	HAL_GPIO_WritePin(
+		lcd_tbl[ch].lcd_pin.en.port,
+		lcd_tbl[ch].lcd_pin.en.pin_num,
+		GPIO_PIN_RESET);
+}
+
+/*
+ * When the power is turned on,
+ * 8-bit operation is automatically selected and
+ * the first write is performed as an 8-bit operation.
+ * so, it must be init for 4-bit operation
+ * 4-bit operation init sequence function
+*/
 static void write_upper_nibble(uint8_t ch, uint8_t instruction){
 	uint8_t upper_nibble = instruction >> 4;
 
@@ -115,7 +134,6 @@ static void lcd_init(uint8_t ch){
 
 	// db[0]~[4] = DB4~DB7
 
-	if(ch == 0){
 	lcd_tbl[ch].lcd_pin.rs.port = GPIOA;
 	lcd_tbl[ch].lcd_pin.rs.pin_num = GPIO_PIN_6;
 
@@ -133,7 +151,6 @@ static void lcd_init(uint8_t ch){
 
 	lcd_tbl[ch].lcd_pin.db[3].port = GPIOA;
 	lcd_tbl[ch].lcd_pin.db[3].pin_num = GPIO_PIN_6;
-	}
 
 	lcd_bit_reset(ch);
 
@@ -144,7 +161,6 @@ static void lcd_init(uint8_t ch){
 }
 
 
-// initialization sequence 4bit interface
 
 bool lcd_begin(uint8_t ch)
 {
@@ -164,18 +180,29 @@ bool lcd_begin(uint8_t ch)
 	vTaskDelay(pdMS_TO_TICKS(1));
 
 	write_upper_nibble(ch,Function_set + 0x10);
+	Delay_us(50);
 
 	write_upper_nibble(ch,Function_set);
+	Delay_us(50);
+
+	lcd_instruction(ch,Function_set + 0x08); // 2line_display
+	Delay_us(50);
 
 	lcd_instruction(ch,Display_off);
+	Delay_us(50);
 
 	lcd_instruction(ch,Display_clear);
+	vTaskDelay(pdMS_TO_TICKS(3));
 
 	lcd_instruction(ch,Entry_mode_set);
+	Delay_us(50);
 
-#endif //MY_RTOS
+	lcd_instruction(ch,Display_on);
+	Delay_us(50);
 
 	return true;
+#endif //MY_RTOS
+
 }
 
 bool lcd_set_cursor(uint8_t ch,uint8_t row,uint8_t col){
