@@ -5,18 +5,21 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../ap/module/ap_lcd.c \
 ../ap/module/cds.c \
 ../ap/module/servo_motor.c \
 ../ap/module/stopwatch.c \
 ../ap/module/uart_cmd.c 
 
 OBJS += \
+./ap/module/ap_lcd.o \
 ./ap/module/cds.o \
 ./ap/module/servo_motor.o \
 ./ap/module/stopwatch.o \
 ./ap/module/uart_cmd.o 
 
 C_DEPS += \
+./ap/module/ap_lcd.d \
 ./ap/module/cds.d \
 ./ap/module/servo_motor.d \
 ./ap/module/stopwatch.d \
@@ -30,7 +33,7 @@ ap/module/%.o ap/module/%.su ap/module/%.cyclo: ../ap/module/%.c ap/module/subdi
 clean: clean-ap-2f-module
 
 clean-ap-2f-module:
-	-$(RM) ./ap/module/cds.cyclo ./ap/module/cds.d ./ap/module/cds.o ./ap/module/cds.su ./ap/module/servo_motor.cyclo ./ap/module/servo_motor.d ./ap/module/servo_motor.o ./ap/module/servo_motor.su ./ap/module/stopwatch.cyclo ./ap/module/stopwatch.d ./ap/module/stopwatch.o ./ap/module/stopwatch.su ./ap/module/uart_cmd.cyclo ./ap/module/uart_cmd.d ./ap/module/uart_cmd.o ./ap/module/uart_cmd.su
+	-$(RM) ./ap/module/ap_lcd.cyclo ./ap/module/ap_lcd.d ./ap/module/ap_lcd.o ./ap/module/ap_lcd.su ./ap/module/cds.cyclo ./ap/module/cds.d ./ap/module/cds.o ./ap/module/cds.su ./ap/module/servo_motor.cyclo ./ap/module/servo_motor.d ./ap/module/servo_motor.o ./ap/module/servo_motor.su ./ap/module/stopwatch.cyclo ./ap/module/stopwatch.d ./ap/module/stopwatch.o ./ap/module/stopwatch.su ./ap/module/uart_cmd.cyclo ./ap/module/uart_cmd.d ./ap/module/uart_cmd.o ./ap/module/uart_cmd.su
 
 .PHONY: clean-ap-2f-module
 

@@ -7,6 +7,6 @@
 ../hw/driver/lcd.c:123:13:lcd_instruction	3
 ../hw/driver/lcd.c:147:13:lcd_init	1
 ../hw/driver/lcd.c:177:6:lcd_begin	2
-../hw/driver/lcd.c:237:6:lcd_set_cursor	6
-../hw/driver/lcd.c:255:6:lcd_write_str	4
-../hw/driver/lcd.c:272:6:lcd_clear	2
+../hw/driver/lcd.c:236:6:lcd_set_cursor	6
+../hw/driver/lcd.c:254:6:lcd_write_str	4
+../hw/driver/lcd.c:271:6:lcd_clear	2

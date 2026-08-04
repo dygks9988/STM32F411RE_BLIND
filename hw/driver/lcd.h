@@ -11,7 +11,7 @@
 #include "gpio.h"
 
 
-
+#define MAX_LCD 1
 
 
 bool lcd_begin(uint8_t ch);

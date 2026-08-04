@@ -5,6 +5,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../rtos/display_task.c \
 ../rtos/rtos_task.c \
 ../rtos/sensor_task.c \
 ../rtos/servo_motor_task.c \
@@ -13,6 +14,7 @@ C_SRCS += \
 ../rtos/uart_cmd_task.c 
 
 OBJS += \
+./rtos/display_task.o \
 ./rtos/rtos_task.o \
 ./rtos/sensor_task.o \
 ./rtos/servo_motor_task.o \
@@ -21,6 +23,7 @@ OBJS += \
 ./rtos/uart_cmd_task.o 
 
 C_DEPS += \
+./rtos/display_task.d \
 ./rtos/rtos_task.d \
 ./rtos/sensor_task.d \
 ./rtos/servo_motor_task.d \
@@ -36,7 +39,7 @@ rtos/%.o rtos/%.su rtos/%.cyclo: ../rtos/%.c rtos/subdir.mk
 clean: clean-rtos
 
 clean-rtos:
-	-$(RM) ./rtos/rtos_task.cyclo ./rtos/rtos_task.d ./rtos/rtos_task.o ./rtos/rtos_task.su ./rtos/sensor_task.cyclo ./rtos/sensor_task.d ./rtos/sensor_task.o ./rtos/sensor_task.su ./rtos/servo_motor_task.cyclo ./rtos/servo_motor_task.d ./rtos/servo_motor_task.o ./rtos/servo_motor_task.su ./rtos/smart_blind_task.cyclo ./rtos/smart_blind_task.d ./rtos/smart_blind_task.o ./rtos/smart_blind_task.su ./rtos/stopwatch_task.cyclo ./rtos/stopwatch_task.d ./rtos/stopwatch_task.o ./rtos/stopwatch_task.su ./rtos/uart_cmd_task.cyclo ./rtos/uart_cmd_task.d ./rtos/uart_cmd_task.o ./rtos/uart_cmd_task.su
+	-$(RM) ./rtos/display_task.cyclo ./rtos/display_task.d ./rtos/display_task.o ./rtos/display_task.su ./rtos/rtos_task.cyclo ./rtos/rtos_task.d ./rtos/rtos_task.o ./rtos/rtos_task.su ./rtos/sensor_task.cyclo ./rtos/sensor_task.d ./rtos/sensor_task.o ./rtos/sensor_task.su ./rtos/servo_motor_task.cyclo ./rtos/servo_motor_task.d ./rtos/servo_motor_task.o ./rtos/servo_motor_task.su ./rtos/smart_blind_task.cyclo ./rtos/smart_blind_task.d ./rtos/smart_blind_task.o ./rtos/smart_blind_task.su ./rtos/stopwatch_task.cyclo ./rtos/stopwatch_task.d ./rtos/stopwatch_task.o ./rtos/stopwatch_task.su ./rtos/uart_cmd_task.cyclo ./rtos/uart_cmd_task.d ./rtos/uart_cmd_task.o ./rtos/uart_cmd_task.su
 
 .PHONY: clean-rtos
 

@@ -1,0 +1,2 @@
+../ap/module/ap_lcd.c:15:6:str_conversion	24	static
+../ap/module/ap_lcd.c:53:6:lcd_update	16	static

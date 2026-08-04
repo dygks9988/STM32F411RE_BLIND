@@ -215,7 +215,7 @@ void StartTask04(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	 smart_blind_task();
+	 display_task();
   }
   /* USER CODE END StartTask04 */
 }

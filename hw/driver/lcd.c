@@ -13,7 +13,7 @@
 #endif
 
 
-#define MAX_LCD 1
+
 #define MAX_ROW 2
 #define MAX_COL 16
 
@@ -149,22 +149,22 @@ static void lcd_init(uint8_t ch){
 	// db[0]~[4] = DB4~DB7
 
 	lcd_tbl[ch].lcd_pin.rs.port = GPIOA;
-	lcd_tbl[ch].lcd_pin.rs.pin_num = GPIO_PIN_6;
+	lcd_tbl[ch].lcd_pin.rs.pin_num = GPIO_PIN_7;
 
-	lcd_tbl[ch].lcd_pin.en.port = GPIOA;
+	lcd_tbl[ch].lcd_pin.en.port = GPIOB;
 	lcd_tbl[ch].lcd_pin.en.pin_num = GPIO_PIN_6;
 
-	lcd_tbl[ch].lcd_pin.db[0].port = GPIOA;
-	lcd_tbl[ch].lcd_pin.db[0].pin_num = GPIO_PIN_6;
+	lcd_tbl[ch].lcd_pin.db[0].port = GPIOC;
+	lcd_tbl[ch].lcd_pin.db[0].pin_num = GPIO_PIN_7;
 
 	lcd_tbl[ch].lcd_pin.db[1].port = GPIOA;
-	lcd_tbl[ch].lcd_pin.db[1].pin_num = GPIO_PIN_6;
+	lcd_tbl[ch].lcd_pin.db[1].pin_num = GPIO_PIN_9;
 
 	lcd_tbl[ch].lcd_pin.db[2].port = GPIOA;
-	lcd_tbl[ch].lcd_pin.db[2].pin_num = GPIO_PIN_6;
+	lcd_tbl[ch].lcd_pin.db[2].pin_num = GPIO_PIN_8;
 
-	lcd_tbl[ch].lcd_pin.db[3].port = GPIOA;
-	lcd_tbl[ch].lcd_pin.db[3].pin_num = GPIO_PIN_6;
+	lcd_tbl[ch].lcd_pin.db[3].port = GPIOB;
+	lcd_tbl[ch].lcd_pin.db[3].pin_num = GPIO_PIN_10;
 
 	lcd_bit_reset(ch);
 
@@ -232,7 +232,7 @@ bool lcd_begin(uint8_t ch)
 
 }
 
-// This fuction set lcd cursor 0~15 to 1~2 lcd line
+// This fuction set lcd cursor 0~15 at 1~2 lcd line
 bool lcd_set_cursor(uint8_t ch,uint8_t row,uint8_t col){
 	if (ch >= MAX_LCD || row  >= MAX_ROW || col >= MAX_COL)return false;
 	RS_write(ch,GPIO_PIN_RESET);
