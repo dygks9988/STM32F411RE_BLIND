@@ -10,7 +10,9 @@
 #define SEC_PER_TEN_MS 100
 #define MIN_PER_SEC 60
 #define HOUR_PER_MIN 60
-
+#define HOUR_MASK 0xFF0000
+#define MIN_MASK 0x00FF00
+#define SEC_MASK 0x0000FF
 
 typedef struct{
 	SW_STATE state;
@@ -101,9 +103,21 @@ void stopwatch_process(void){
 				sw_cmd = SW_NONE;
 			}
 			break;
+		default:
+			break;
 	}
 	//if(sw_cmd == SW_GET_TIME)
 
 }
 
+void get_stopwatch_snapshot(uint8_t* pstate,uint32_t* ptime){
+	if(pstate == NULL || ptime == NULL)return;
 
+	*ptime = 0;
+
+	*ptime = (*ptime & ~HOUR_MASK) | (((uint32_t)sw.hour_cnt << 16) & HOUR_MASK);
+	*ptime = (*ptime & ~MIN_MASK) | (((uint32_t)sw.min_cnt << 8) & MIN_MASK);
+	*ptime = (*ptime & ~SEC_MASK) | ((uint32_t)sw.sec_cnt & SEC_MASK);
+
+	*pstate = sw.state;;
+}

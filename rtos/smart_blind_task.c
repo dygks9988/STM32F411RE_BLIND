@@ -7,24 +7,30 @@
 
 #include "rtos_task.h"
 #include "smart_blind.h"
+#include "ap_lcd.h"
+
 
 /**
  * @brief   블라인드 상태를 저장할 변수 생성,명령을 수신하면 블라인드 애플리케이션 모듈을 호출하고, 서보 모터로 명령을 송신한다
  * @details   루프가 명령을 수신받을 때까지 Blocking 된다.
  * @return NONE
  */
-
 void smart_blind_task(void){
 	Blind_StateTypeDef blind_state;
 	Blind_CmdTypeDef blind_cmd;
 	Servo_Cmd_PacketTypeDef pservo_cmd;
+	LcdMessage_TypeDef lcd_blind_msg = {TARGET_SMARTBLIND, 0,BLIND_NONE};
+
 
 	blind_init(&blind_state);
 
 	for(;;){
 		if(xQueueReceive(SmartBlind_Cmd_QueueHandle, &blind_cmd, portMAX_DELAY)==pdPASS){
 			if(blind_process(&blind_state,blind_cmd,&pservo_cmd) == true){
+				lcd_blind_msg.target = TARGET_SMARTBLIND;
+				lcd_blind_msg.state = blind_state;
 				xQueueSend(Servo_Cmd_QueueHandle,&pservo_cmd,pdMS_TO_TICKS(10));
+				xQueueSend(LcdMsg_QueueHandle,&lcd_blind_msg,pdMS_TO_TICKS(5));
 			};
 		}
 	}

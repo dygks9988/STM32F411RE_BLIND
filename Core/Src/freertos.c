@@ -77,6 +77,13 @@ const osThreadAttr_t myTask04_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for mystopwatch */
+osThreadId_t mystopwatchHandle;
+const osThreadAttr_t mystopwatch_attributes = {
+  .name = "mystopwatch",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
 /* Definitions for myQueue01 */
 osMessageQueueId_t myQueue01Handle;
 const osMessageQueueAttr_t myQueue01_attributes = {
@@ -92,6 +99,7 @@ void StartDefaultTask(void *argument);
 void uart(void *argument);
 void StartTask03(void *argument);
 void StartTask04(void *argument);
+void stopwatch(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -138,6 +146,9 @@ void MX_FREERTOS_Init(void) {
   /* creation of myTask04 */
   myTask04Handle = osThreadNew(StartTask04, NULL, &myTask04_attributes);
 
+  /* creation of mystopwatch */
+  mystopwatchHandle = osThreadNew(stopwatch, NULL, &mystopwatch_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -161,7 +172,7 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    stopwatch_task();
+    display_task();
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -215,9 +226,27 @@ void StartTask04(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	 display_task();
+	  smart_blind_task();
   }
   /* USER CODE END StartTask04 */
+}
+
+/* USER CODE BEGIN Header_stopwatch */
+/**
+* @brief Function implementing the mystopwatch thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_stopwatch */
+void stopwatch(void *argument)
+{
+  /* USER CODE BEGIN stopwatch */
+  /* Infinite loop */
+  for(;;)
+  {
+	 stopwatch_task();
+  }
+  /* USER CODE END stopwatch */
 }
 
 /* Private application code --------------------------------------------------*/

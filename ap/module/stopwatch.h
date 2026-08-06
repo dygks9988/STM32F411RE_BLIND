@@ -12,7 +12,7 @@
 
 
 typedef enum{
-	SW_START = 1,
+	SW_START = 0,
 	SW_PAUSE,
 	SW_STOP,
 	SW_GET_TIME,
@@ -21,7 +21,7 @@ typedef enum{
 
 
 typedef enum{
-	IDLE = 1,
+	IDLE = 0,
 	RUNNING,
 	PAUSE
 }SW_STATE;
@@ -32,5 +32,6 @@ void stopwatch_stop(void);
 void stopwatch_pause(void);
 void stopwatch_process(void);
 void stopwatch_set_cmd(uint8_t cmd);
+void get_stopwatch_snapshot(uint8_t* pstate,uint32_t* ptime);
 
 #endif /* STOPWATCH_H_ */

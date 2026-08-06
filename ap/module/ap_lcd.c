@@ -9,10 +9,10 @@
 #include "ap_lcd.h"
 #include "smart_blind.h"
 
-static char blind_buf[MAX_LCD][20] = {{"BILIND_NONE"}};
-static char stopwatch_buf[MAX_LCD][20] = {{"STOPWATCH_NONE"}};
+static char blind_buf[MAX_LCD][20] = {{""}};
+static char stopwatch_buf[MAX_LCD][20] = {{""}};
 
-bool str_conversion(uint8_t ch,const LcdMessage_TypeDef* msg){
+bool lcd_unpacking_msg(uint8_t ch,const LcdMessage_TypeDef* msg){
 	if(msg == NULL)return false;
 	if(ch >= MAX_LCD)return false;
 
@@ -20,17 +20,19 @@ bool str_conversion(uint8_t ch,const LcdMessage_TypeDef* msg){
 		case TARGET_NONE:
 			return false;
 			break;
+// lcd msg가 stopwatch에 의존하지 않게 하기 위해 time value를 송신측에서 병렬화 한 후 수신받는다.
 		case TARGET_STOPWATCH:
 			sprintf(stopwatch_buf[ch],
-					"%u : %u : %u",
+					"%lu:%lu:%lu",
 					(msg->value >> 16) & (0xFF),
 					(msg->value >> 8) & (0xFF),
 					msg->value & (0xFF));
+
 			break;
 		case TARGET_SMARTBLIND:
 			switch(msg->state){
 				case BLIND_NONE:
-					return false;
+					sprintf(blind_buf[ch],"BLIND NONE");
 					break;
 				case BLIND_OPEN:
 					sprintf(blind_buf[ch],"BLIND OPEN");
@@ -55,9 +57,11 @@ bool lcd_update(uint8_t ch){
 
 	lcd_set_cursor(ch, 0, 0);
 	lcd_write_str(ch, blind_buf[ch]);
+	lcd_write_str(ch, "              ");
 
 	lcd_set_cursor(ch, 1, 0);
 	lcd_write_str(ch, stopwatch_buf[ch]);
+	lcd_write_str(ch, "              ");
 
 	return true;
 

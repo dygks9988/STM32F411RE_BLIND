@@ -24,5 +24,7 @@ extern QueueHandle_t UartRxQueueHandle;
 extern QueueHandle_t SW_Cmd_QueueHandle;
 extern QueueHandle_t Servo_Cmd_QueueHandle;
 extern QueueHandle_t SmartBlind_Cmd_QueueHandle;
+extern QueueHandle_t LcdMsg_QueueHandle;
+
 
 #endif /* RTOS_TASK_H_ */

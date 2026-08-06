@@ -16,13 +16,19 @@ typedef enum{
 	TARGET_SMARTBLIND
 }LcdTarget_TypeDef;
 
+
+/* lcd msg instance
+ * lcd task에 queue를 send할 때 사용 되며 송신 측에서 값을 대입한 뒤 송신 되어야 한다.
+ */
 typedef struct {
 	LcdTarget_TypeDef target;
 	uint32_t value;
 	uint8_t state;
 }LcdMessage_TypeDef;
 
-bool ap_lcd_process();
+
+bool lcd_unpacking_msg(uint8_t ch,const LcdMessage_TypeDef* msg);
+bool lcd_update(uint8_t ch);
 
 
 

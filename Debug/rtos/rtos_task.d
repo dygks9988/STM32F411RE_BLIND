@@ -43,7 +43,9 @@ rtos/rtos_task.o: ../rtos/rtos_task.c ../rtos/rtos_task.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/servo_motor.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h \
  C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h \
- ../Core/Inc/tim.h ../Core/Inc/main.h
+ ../Core/Inc/tim.h ../Core/Inc/main.h \
+ C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/ap_lcd.h \
+ C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/lcd.h ../Core/Inc/gpio.h
 ../rtos/rtos_task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
@@ -92,3 +94,6 @@ C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_motor.h:
 C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/hw_tim.h:
 ../Core/Inc/tim.h:
 ../Core/Inc/main.h:
+C:/stm_workspace_1.16.1/stm32f411_RE/ap/module/ap_lcd.h:
+C:/stm_workspace_1.16.1/stm32f411_RE/hw/driver/lcd.h:
+../Core/Inc/gpio.h:

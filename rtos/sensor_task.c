@@ -14,7 +14,6 @@
  * @details	루프의 로직의 실행 시간 + 100ms loop blocking.
  * @return NONE
  */
-
 void sensor_task(void){
 	static CdsState_TypeDef cds_state = CDS_NONE;
 

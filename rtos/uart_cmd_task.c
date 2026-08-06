@@ -12,13 +12,10 @@
  * @details   루프가 명령을 수신받을 때까지 Blocking 된다.
  * @return NONE
  */
-
 void uart_cmd_task(){
 	Uart_Cmd_type huart_cmd;
 	uint8_t uart_rx_data;
 	Servo_Cmd_PacketTypeDef pservo;
-
-
 
 	for (;;){
 		if(xQueueReceive(UartRxQueueHandle, &uart_rx_data, portMAX_DELAY)==pdPASS)
