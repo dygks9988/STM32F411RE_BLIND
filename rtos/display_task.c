@@ -13,8 +13,7 @@ void display_task(void){
 
 	LcdMessage_TypeDef lcd_msg;
 	memset(&lcd_msg,0,sizeof(lcd_msg));
-	lcd_unpacking_msg(0, &lcd_msg);
-	lcd_update(0);
+
 
 	for(;;){
 		if(xQueueReceive(LcdMsg_QueueHandle, &lcd_msg, portMAX_DELAY)){
