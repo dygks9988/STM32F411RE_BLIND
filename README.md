@@ -19,8 +19,10 @@ STM32F411RE 보드를 기반으로 GPIO, TIM, UART, Interrupt, FreeRTOS Task,Que
 - HD44780 LCD 출력 
 
 ## 추가 예정
-- 자동 제어 정책
-- Linux 연동
+- 센서 상태기반 자동 제어 정책
+- Linux Gateway 연동
+- 정량적 측정 기반 TASK Stack Size 최적화, RTOS Queue Length 산정
+- Task Priority 설계
 
 ## 주요 데이터 흐름
 
