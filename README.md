@@ -1,20 +1,26 @@
+
 ### STM32F411RE RTOS 기반 비동기 제어 시스템
 
 ## 프로젝트 개요
-STM32F411RE 보드를 기반으로 GPIO, TIM, UART, Interrupt, FreeRTOS Task를 활용한 비동기 제어 시스템을 구현하는 프로젝트입니다.
+STM32F411RE 보드를 기반으로 GPIO, TIM, UART, Interrupt, FreeRTOS Task,Queue를 활용한 비동기 제어 시스템을 구현하는 프로젝트입니다.
 
-초기에는 TIM Interrupt와 main loop 기반의 Stopwatch 기능 구현으로 시작했지만, 기능 확장 과정에서 main.c의 복잡도 증가와 Application/HW 계층 결합 문제를 발견했습니다. 이를 개선하기 위해 HW Wrapper 계층, RTOS Task, Queue 기반 모듈 간 통신 구조로 리팩토링했습니다.
-현재 목표를 SERVO_MOTOR를 활용한 SMART_BLIND 시스템 프로젝트로 재구성할 계획입니다.
+초기에는 TIM Interrupt와 main loop 기반의 Stopwatch 기능 구현으로 시작했지만, 기능 확장 과정에서 main.c의 복잡도 증가와 애플리케이션이 하드웨어에 종속되는 문제를 발견했고, 이를 개선하기 위해 HW Wrapper 계층구조로 리팩토링하여 상위 계층에서 하드웨어를 직접 조작하지 않게 하였습니다.
+
+이후 임의의 시스템인 Smart Blind를 구성하여 UART 명령 수신 → Parser → Command Queue → Smart Blind FSM → Servo Command Queue → Servo Task → PWM으로 이어지는 비동기 제어 흐름을 구현하였습니다.
+
+각 HW 모듈은 채널 정보를 통해 여러 인스턴스를 처리할 수 있도록 구성하여 재사용성을 고려하였으며,애플리케이션의 상태를 한 모듈만이 소유하여 이벤트가 발생하면 상태를 전이하는 방식을 사용하여 모듈간의 의존을 최소화 하였습니다. 또한 Task 간 데이터 전달에는 Queue를 사용하고,주기적인 이벤트가 없는 Task는 대기하도록 구성하여 지속적인 polling을 최소화하였습니다.
 
 ## 현재 구현 상태
-- AP/HW 계층 분리
-- Stopwatch Task 추가
-- UART RX ISR → Queue → UART_CMD_TASK 데이터 흐름 검증
-- UART_CMD_PARSER 모듈 추가
-- UART_CMD_TASK → SW_TASK Queue 통신 검증
-- UART 명령 기반 Stopwatch 상태 제어 검증
-- SERVO_MOTOR 동작을 결정하는 모듈과 태스크 추가
-- SERVO_MOTOR 동작시키는 SMART_BLIND 애플리케이션 모듈, TASK 추가
+- UART Interrupt RX
+- 명령 Passer
+- Queue 기반 task간 통신
+- Smatblind, Stopwatch FSM
+- Servo PWM 제어
+- HD44780 LCD 출력 
+
+## 추가 예정
+- 자동 제어 정책
+- Linux 연동
 
 ## 주요 데이터 흐름
 
@@ -136,12 +142,7 @@ PC terminal
 
 ---
 
-### 진행 중: Servo Motor Task 확장
 
-- UART_CMD_PARSER에서 SERVO 명령을 분리하고, ServoCmdQueue를 통해 Servo Task로 전달하는 구조를 추가 중입니다.
-- 현재 서보 모터의 명령어를 처리하는 로직을 추가 했습니다.
-- 서보 모터 디바이스 구조화하여 TASK에서 여러개의 모터를 각각의 객체 처럼 다루는 방식으로 설계되었습니다.
-- UART_CMD가 SERVO_TASK로 전달되면 Process를 실행하여 명령어를 처리하는 로직을 실행하는 구조로 설계중에 있습니다.
 
 - 현재 servo_motor 모듈이 set_servo_motor_cmd로 명령과 value 받고 servo_motor_process를 실행해 CMD를 기반으로 동작하는 것을 검증했습니다.
 - 로직 아날라이저를 이용해 정확한 PWM의 20ms 주기의 신호와 1ms / 1.5ms / 2ms High Pulse 신호를 측정하여 동작을 검증 했습니다.
