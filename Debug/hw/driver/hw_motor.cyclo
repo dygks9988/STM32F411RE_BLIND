@@ -1,5 +1,0 @@
-../hw/driver/hw_motor.c:14:6:hw_motor_init	1
-../hw/driver/hw_motor.c:19:6:hw_motor_start	1
-../hw/driver/hw_motor.c:23:6:hw_motor_stop	1
-../hw/driver/hw_motor.c:27:17:angle_to_ccr	2
-../hw/driver/hw_motor.c:33:6:hw_motor_set_angle	1

@@ -1,4 +1,0 @@
-../hw/driver/uart.c:23:6:uart_init	1
-../hw/driver/uart.c:27:6:uart_tx	2
-../hw/driver/uart.c:32:6:uart_rx_ready	2
-../hw/driver/uart.c:38:6:HAL_UART_RxCpltCallback	3

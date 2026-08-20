@@ -1,6 +1,0 @@
-../hw/driver/hw_tim.c:18:6:hw_TIM_start	2
-../hw/driver/hw_tim.c:23:6:hw_TIM_stop	2
-../hw/driver/hw_tim.c:27:6:hw_TIM_pwm_start	2
-../hw/driver/hw_tim.c:31:6:hw_TIM_pwm_stop	2
-../hw/driver/hw_tim.c:35:6:hw_TIM_pwm_set_ccr	1
-../hw/driver/hw_tim.c:43:6:hw_TIM_PeriodElapsedCallback	2

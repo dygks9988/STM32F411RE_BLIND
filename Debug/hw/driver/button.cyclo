@@ -1,2 +1,0 @@
-../hw/driver/button.c:19:6:Bt_get_pressed	2
-../hw/driver/button.c:29:6:HAL_GPIO_EXTI_Callback	2

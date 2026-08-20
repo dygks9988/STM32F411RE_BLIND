@@ -1,8 +1,0 @@
-../ap/module/stopwatch.c:28:6:stopwatch_init	4	static
-../ap/module/stopwatch.c:37:6:stopwatch_start	8	static
-../ap/module/stopwatch.c:41:6:stopwatch_pause	8	static
-../ap/module/stopwatch.c:45:6:stopwatch_stop	8	static
-../ap/module/stopwatch.c:50:6:stopwatch_set_cmd	16	static
-../ap/module/stopwatch.c:55:6:stopwatch_update	8	static
-../ap/module/stopwatch.c:78:6:stopwatch_process	8	static
-../ap/module/stopwatch.c:113:6:get_stopwatch_snapshot	16	static

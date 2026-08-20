@@ -290,43 +290,5 @@ bool lcd_clear(uint8_t ch){
 
 // Set the cursor before reading data.
 // return ASCII
-uint8_t lcd_read_data(uint8_t ch){
-	if(ch >= MAX_LCD)return false;
 
-
-	GPIO_InitStruct.Pin = LCD_D4_Pin|LCD_D5_Pin|LCD_D6_Pin|LCD_D7_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-	RS_write(ch,GPIO_PIN_SET);
-	RW_write(ch,GPIO_PIN_SET);
-
-	enable_pulse(ch);
-
-	for(int i=0; i<4; i++){
-		data |= HAL_GPIO_ReadPin(
-		lcd_tbl[ch].lcd_pin.db[i].port,
-		lcd_tbl[ch].lcd_pin.db[i].pin_num
-		) << i;
-
-	}
-
-	enable_pulse(ch);
-
-	for(int i=0; i<4; i++){
-			data |= HAL_GPIO_ReadPin(
-			lcd_tbl[ch].lcd_pin.db[i].port,
-			lcd_tbl[ch].lcd_pin.db[i].pin_num
-			) << i+3;
-	}
-
-	GPIO_InitStruct.Pin = LCD_D4_Pin|LCD_D5_Pin|LCD_D6_Pin|LCD_D7_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-	return data;
-}
 

@@ -34,6 +34,12 @@ void uart_rx_ready(uint8_t ch){
 	rx_state = HAL_UART_Receive_IT(uart_tbl[ch],&rx_1byte,sizeof(rx_1byte));
 }
 
+int __io_putchar(int ch) {
+HAL_UART_Transmit(&huart2, (uint8_t*)&ch, 1, HAL_MAX_DELAY);
+return ch; // Return written character
+}
+
+
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	if(huart->Instance == uart_tbl[UART_CMD_CH]->Instance){
