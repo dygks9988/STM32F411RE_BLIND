@@ -12,9 +12,9 @@ STM32F411RE 보드를 기반으로 GPIO, TIM, UART, Interrupt, FreeRTOS Task,Que
 
 ## 현재 구현 상태
 - UART Interrupt RX
-- 명령 Passer
+- 명령 Parser
 - Queue 기반 task간 통신
-- Smatblind, Stopwatch FSM
+- SmartBlind, Stopwatch FSM
 - Servo PWM 제어
 - HD44780 LCD 출력 
 
@@ -98,7 +98,7 @@ PC terminal
 - HD44780 LCD
 
 
-**Debuger**
+**Debugger**
 - ST-LINK Debugger
 - Logic Analyzer
 - Tera Term
@@ -158,7 +158,7 @@ PC terminal
 **3. 문제 해결 과정**
 - UART_RX_ISR과 TASK의 연결 흐름을 확인 할 때 ISR에 진입하지 않는 것을 확인했고, NVIC TABLE ENABLE을 통해 ISR의 진입을 확인했습니다.
 - UART_RX_ISR 진입은 확인했으나 teraterm의 터미널로 data를 송신하면 보드가 뻗어버리는 문제가 발생했습니다
-- HardFualt가 일어난 것으로 판단하고, RTOS_Queue의 생성 타이밍을 확인, 생성타이밍을 추가하여 Queue의 데이터 흐름을 검증 했습니다.
+- HardFault가 일어난 것으로 판단하고, RTOS_Queue의 생성 타이밍을 확인, 생성타이밍을 추가하여 Queue의 데이터 흐름을 검증 했습니다.
 
 **4. RTOS_Queue적용을 통해 배운점**
 - 기존에는 RTOS를 TASK를 실행하는 상위계층이라고 생각했습니다.
@@ -182,7 +182,7 @@ PC terminal
 - Tera Term에서 SW_START, SW_PAUSE, SW_STOP 명령을 송신했을 때, Debugger를 통해 각 command가 SW_TASK로 전달되고 Stopwatch 상태 전환 로직에 반영되는 것을 확인했습니다.
 
 **3. 발견한 문제점**
-- 현재 TX와 UART_RX의 BUADRATE가 일치하지 않으면 UART_CMD_PARSER의 내부 정적배열에 쓰레기 값이 저장되는 것을 확인했습니다.
+- 현재 TX와 UART_RX의 BAUDRATE가 일치하지 않으면 UART_CMD_PARSER의 내부 정적배열에 쓰레기 값이 저장되는 것을 확인했습니다.
 - 정적 배열의 buffer_overflow의 예외처리는 if(buffer_idx >= buffer_size)buffer_idx = 0;로 적용되어 있는 상태입니다.
 - 현재 UART_CMD_PARSER내부의 정적배열에 쓰레기값이 들어올 때의 예외처리를 고민중입니다.
 
@@ -210,12 +210,12 @@ PC terminal
 ### v2.6 — LCD 출력
 
 **1. LCD HD44780 라이브러리 구현**
-- LCD1602의 드라이버인 HD44780의 데이터 시트의 초기화 시퀸스와 타이밍을 기반으로 한 디바이스 추상화 라이브러리를 작성
+- LCD1602의 드라이버인 HD44780의 데이터 시트의 초기화 시퀀스와 타이밍을 기반으로 한 디바이스 추상화 라이브러리를 작성
 - 여러 핀으로 연결되어 있는 GPIO를 nibble로 관리
 - us단위의 타이밍을 CORE M4의 DWT로 구현
 - 다중 인스턴스를 계획했으나 현재 LCD의 GPIO의 사용을 봤을 때 불가능하다 판단, GPIO의 소모를 줄이기 위해 I2C 도입을 고려 중
 
-**2. Diplay Task 추가**
+**2. Display Task 추가**
 - Stopwatch 시간과 Smart Blind 상태를 LCD에 출력하기 위해 Display Task를 추가
 - Stopwatch/Smart Blind 각 모듈에서 Queue로 데이터를 전달받아 LCD에 반영하는 구조로 구성
  
