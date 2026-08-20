@@ -1,11 +1,6 @@
 # Build output
 Debug/
-Release/
 
 # IDE local settings
 .settings/
-.metadata/
 
-# OS junk
-.DS_Store
-Thumbs.db
