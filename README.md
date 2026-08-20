@@ -163,12 +163,37 @@ PC terminal
 
 ---
 
-
-
 - 현재 servo_motor 모듈이 set_servo_motor_cmd로 명령과 value 받고 servo_motor_process를 실행해 CMD를 기반으로 동작하는 것을 검증했습니다.
 - 로직 아날라이저를 이용해 정확한 PWM의 20ms 주기의 신호와 1ms / 1.5ms / 2ms High Pulse 신호를 측정하여 동작을 검증 했습니다.
 - 현재 uint8 타입의 angle에 256이상의 값이 입력되었을 때 1byteoverflow가 발생하여 ccr에 에러값이 입력되는 것을 확인했습니다.
 - 이를 해결하기 위해 파서에서 angle의 값이 180도 초과인 비정상적인 명령이 입력 되었을때 명령을 전송 하지 않는 예외처리를 할 예정입니다 
+---
+### v2.5 — Smart Blind FSM 구현 및 서보 연동 검증
+
+**1. Smart Blind FSM 구현**
+- 블라인드 상태를 BLIND_NONE, BLIND_OPEN, BLIND_HALF, BLIND_CLOSE로 정의
+- 수신 명령(BLIND_CMD_OPEN / BLIND_CMD_HALF / BLIND_CMD_CLOSE)에 따라 상태를 전이하고, 각 상태에 대응하는 서보 각도(0° / 45° / 90°)를 Servo_Cmd_Packet에 담아 반환
+- 현재 상태와 동일한 명령이 들어오면 상태를 바꾸지 않고 false를 반환하도록 처리해 불필요한 서보 명령 전송을 방지
+
+**2. 검증**
+
+- UART로 OPEN/HALF/CLOSE 명령을 전송해 Smart Blind Task → Servo Queue → Servo Task로 이어지는 흐름이 정상 동작하는지 확인
+- 로직 아날라이저로 서보 PWM 출력을 측정해, 각 명령에 대응하는 각도(0° / 45° / 90°)로 정확히 구동되는지 검증
+
+---
+
+### v2.6 — LCD 출력
+
+**1. LCD HD44780 라이브러리 구현**
+- LCD1602의 드라이버인 HD44780의 데이터 시트의 초기화 시퀸스와 타이밍을 기반으로 한 디바이스 추상화 라이브러리를 작성
+- 여러 핀으로 연결되어 있는 GPIO를 nibble로 관리
+- us단위의 타이밍을 CORE M4의 DWT로 구현
+- 다중 인스턴스를 계획했으나 현재 LCD의 GPIO의 사용을 봤을 때 불가능하다 판단, GPIO의 소모를 줄이기 위해 I2C 도입을 고려 중
+
+**2. Diplay Task 추가**
+- Stopwatch 시간과 Smart Blind 상태를 LCD에 출력하기 위해 Display Task를 추가
+- Stopwatch/Smart Blind 각 모듈에서 Queue로 데이터를 전달받아 LCD에 반영하는 구조로 구성
+ 
 
 
 
