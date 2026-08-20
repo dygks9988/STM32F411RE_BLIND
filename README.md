@@ -26,6 +26,9 @@ STM32F411RE 보드를 기반으로 GPIO, TIM, UART, Interrupt, FreeRTOS Task,Que
 
 ## 주요 데이터 흐름
 
+<img width="651" height="775" alt="RTOS_SYSTEM drawio (2)" src="https://github.com/user-attachments/assets/6ecc0287-07f6-4040-9ea8-bd335aa109a7" />
+
+
 **STOPWATCH**
 
 UART_RX_ISR > Uart_Rx_Queue > uart_cmd_task > uart_cmd_process(parser) > Sw_Cmd_Queue > sw_task > sw_module
