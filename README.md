@@ -75,7 +75,7 @@ PC terminal
 ## 사용기술
 
 
-**STM32F411RE, FreeRTOS, UART, TIM/PWM, GPIO, Interrupt, HD44780 LCD, HAL, ST-LINK Debugger, Tera Term, Logic Analyzer**
+**STM32F411RE, FreeRTOS, UART, TIM/PWM, GPIO, Interrupt, HD44780 LCD, HAL, ST-LINK Debugger, Tera Term, Logic Analyzer,SG90, HD44780**
 
 ---
 ## 개발 기록
