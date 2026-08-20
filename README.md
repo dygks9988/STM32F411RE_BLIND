@@ -68,7 +68,7 @@ PC terminal
 |---|---|---|
 | 전역 변수 유실 가능성 | ISR-메인루프 간 타이밍 불일치 | RTOS Queue 기반 통신으로 전환 |
 | ISR 미진입 | NVIC 인터럽트 미활성화 | NVIC Table Enable 적용 |
-| 데이터 송신 시 HardFault | RTOS Queue 생성 타이밍 이슈 | Queue 생성 시점 조정 |
+| 데이터 송신 시 HardFault | RTOS Queue 생성 이슈 | Queue 생성 조정 |
 | 파서 쓰레기 값 유입 | TX/RX Baudrate 불일치 | 버퍼 오버플로우 방어 로직 적용, 추가 예외처리 검토 중 |
 | CCR 오동작 | `uint8 angle` 256 이상 입력 시 overflow | 파서 단에서 180도 초과 값 사전 차단 예정 |
 
