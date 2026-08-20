@@ -71,6 +71,11 @@ PC terminal
 | 데이터 송신 시 HardFault | RTOS Queue 생성 이슈 | Queue 생성 조정 |
 | 파서 쓰레기 값 유입 | TX/RX Baudrate 불일치 | 버퍼 오버플로우 방어 로직 적용, 추가 예외처리 검토 중 |
 | CCR 오동작 | `uint8 angle` 256 이상 입력 시 overflow | 파서 단에서 180도 초과 값 사전 차단 예정 |
+---
+## 사용기술
+
+
+**STM32F411RE, FreeRTOS, UART, TIM/PWM, GPIO, Interrupt, HD44780 LCD, HAL, ST-LINK Debugger, Tera Term, Logic Analyzer**
 
 ---
 ## 개발 기록
